@@ -1,16 +1,23 @@
-const express = require("express");
+let users = [
+  {
+    id: 1,
+    name: "Mariana",
+    email: "mariana@email.com"
+  },
+  {
+    id: 2,
+    name: "Higor",
+    email: "higor@email.com"
+  }
+];
 
-const app = express();
-const PORT = 3000;
+let nextId = 3;
 
-app.use(express.json());
+function getNextId() {
+  return nextId++;
+}
 
-app.get("/", (req, res) => {
-    res.status(200).json({
-        message: "API Connect funcionando!"
-    });
-});
-
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+module.exports = {
+  users,
+  getNextId
+};
